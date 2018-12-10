@@ -1,8 +1,6 @@
 server:
   port: 8000
 spring:
-  application:
-    name: microservicecloud-config
   cloud:
     config:
       server:

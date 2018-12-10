@@ -2,7 +2,7 @@ server:
   port: 8000
 spring:
   application:
-    name: microservicecloud-config
+    name: sso-config
   cloud:
     config:
       server:
