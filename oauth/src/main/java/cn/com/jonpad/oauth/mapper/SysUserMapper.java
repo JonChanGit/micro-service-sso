@@ -2,6 +2,7 @@ package cn.com.jonpad.oauth.mapper;
 
 import cn.com.jonpad.oauth.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
+    SysUser findByUsername(@Param("username") String username);
 }

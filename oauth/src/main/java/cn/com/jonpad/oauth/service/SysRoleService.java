@@ -1,7 +1,7 @@
 package cn.com.jonpad.oauth.service;
 
 import cn.com.jonpad.api.vo.Result;
-import cn.com.jonpad.oauth.entity.SysUser;
+import cn.com.jonpad.oauth.entity.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -10,10 +10,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author Jon Chan
- * @since 2018-12-12
+ * @since 2018-12-13
  */
-public interface SysUserService extends IService<SysUser> {
+public interface SysRoleService extends IService<SysRole> {
 
-    Result<SysUser> findByUsername(String username);
-
+    Result<SysRole> getRoleByUserId(Long userId);
 }
