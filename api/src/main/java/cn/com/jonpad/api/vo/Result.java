@@ -1,13 +1,9 @@
 package cn.com.jonpad.api.vo;
 
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
-import javax.imageio.stream.IIOByteBuffer;
 
 /**
  * 统一返回对象

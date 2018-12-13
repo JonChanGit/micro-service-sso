@@ -4,6 +4,8 @@ import cn.com.jonpad.api.vo.Result;
 import cn.com.jonpad.oauth.entity.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -14,5 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysRoleService extends IService<SysRole> {
 
-    Result<SysRole> getRoleByUserId(Long userId);
+    Result<List<SysRole>> getRoleByUserId(Long userId);
 }

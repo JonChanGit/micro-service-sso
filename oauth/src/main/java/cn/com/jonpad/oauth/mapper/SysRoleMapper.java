@@ -3,6 +3,8 @@ package cn.com.jonpad.oauth.mapper;
 import cn.com.jonpad.oauth.entity.SysRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,5 +15,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
-    SysRole getRoleByUserId(Long userId);
+    List<SysRole> getRoleByUserId(Long userId);
 }
