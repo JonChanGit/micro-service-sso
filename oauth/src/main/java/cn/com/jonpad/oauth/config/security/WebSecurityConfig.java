@@ -1,4 +1,4 @@
-package cn.com.jonpad.oauth.config;
+package cn.com.jonpad.oauth.config.security;
 
 import cn.com.jonpad.oauth.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
