@@ -22,6 +22,8 @@
     <modules>
         <module>config-server</module>
         <module>api</module>
+        <module>eureka</module>
+        <module>oauth</module>
     </modules>
 
     <dependencyManagement>
