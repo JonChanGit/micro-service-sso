@@ -20,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @date 2018/12/12 21:20
  */
 @Configuration
-@EnableWebSecurity
 // @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -29,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // return new BCryptPasswordEncoder();
+        // return new BCryptPasswordEncoder(9);
         return NoOpPasswordEncoder.getInstance();
     }
 
@@ -66,7 +65,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("**").permitAll()
             .and()
             .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                // 启用传统表单认证
+                .and().formLogin();
     }
 
     /**
