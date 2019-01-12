@@ -25,6 +25,7 @@
         <module>eureka</module>
         <module>oauth</module>
         <module>oauth-jwt</module>
+        <module>zuul</module>
     </modules>
 
     <dependencyManagement>
