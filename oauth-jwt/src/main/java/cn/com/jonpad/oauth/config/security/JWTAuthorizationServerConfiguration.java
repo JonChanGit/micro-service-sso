@@ -68,7 +68,7 @@ public class JWTAuthorizationServerConfiguration extends AuthorizationServerConf
                 // 客户端id
                 .withClient("clientapp")
                 // （对于可信任的客户端是必须的）客户端的私密信息。
-                .secret("12345678")
+                .secret(passwordEncoder.encode("12345678"))
                 // 授权给客户端使用的权限类型。默认值为空。
                 .authorizedGrantTypes("refresh_token", "password")
                 .accessTokenValiditySeconds(1800)

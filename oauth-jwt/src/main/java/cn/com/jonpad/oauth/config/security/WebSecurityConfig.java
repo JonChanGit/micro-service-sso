@@ -28,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // return new BCryptPasswordEncoder(9);
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder(9);
+        // return NoOpPasswordEncoder.getInstance();
     }
 
     @Override
@@ -64,10 +64,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().fullyAuthenticated()
             .antMatchers("**").permitAll()
             .and()
-            .csrf().disable()
+                .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 // 启用传统表单认证
-                .and().formLogin();
+                .and().formLogin()
+            .and()
+                .httpBasic()
+        ;
     }
 
     /**
