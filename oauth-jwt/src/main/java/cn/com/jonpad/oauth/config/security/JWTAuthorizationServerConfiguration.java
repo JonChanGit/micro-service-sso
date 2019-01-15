@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -81,6 +82,11 @@ public class JWTAuthorizationServerConfiguration extends AuthorizationServerConf
         return new JWTTokenEnhancer();
     }
 
+    @Bean
+    public WebResponseExceptionTranslator webResponseExceptionTranslator(){
+        return new JWTAuthorizationExceptionTranslator();
+    }
+
     /**
      * 配置AuthorizationServer 端点的非安全属性，
      * 也就是 token 存储方式、token 配置、用户授权模式等。
@@ -105,7 +111,8 @@ public class JWTAuthorizationServerConfiguration extends AuthorizationServerConf
                 .tokenEnhancer(tokenEnhancerChain)
                 //password模式下，验证resource owner
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .exceptionTranslator(webResponseExceptionTranslator());
         //Token 生命周期管理接口 AuthorizationServerTokenServices, 默认使用: DefaultTokenServices。
     }
 }
