@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
+ * JwtTokenStore 配置
  * @author Jon Chan
  * @date 2019/1/9 23:57
  */
