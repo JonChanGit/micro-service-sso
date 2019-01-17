@@ -1,0 +1,26 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: sso-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: sso-oauth
+          uri: lb://sso-oauth
+          predicates:
+            - Path=/authentication/**
+          filter:
+            secure-headers:
+        - id: provide-user
+          uri: lb://provide-user
+          predicates:
+          - Path=/user/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spring.cloud.eureka:8001/eureka/
+logging:
+  level:
+    org.springframework: INFO
+    cn.com.jonpad: INFO
