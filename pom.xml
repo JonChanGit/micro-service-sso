@@ -23,11 +23,12 @@
         <module>config-server</module>
         <module>api</module>
         <module>eureka</module>
-        <module>oauth</module>
+        <!--<module>oauth</module>-->
         <module>oauth-jwt</module>
         <module>zuul</module>
-        <module>gateway</module>
+        <!--<module>gateway</module>-->
         <module>provide-user</module>
+        <module>provide-sales</module>
     </modules>
 
     <dependencyManagement>

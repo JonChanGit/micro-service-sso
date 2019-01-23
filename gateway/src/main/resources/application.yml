@@ -24,3 +24,4 @@ logging:
   level:
     org.springframework: INFO
     cn.com.jonpad: INFO
+debug: false
