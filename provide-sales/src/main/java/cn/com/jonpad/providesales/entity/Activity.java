@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
- * 商品/库存
+ * 活动
  * @author Jon Chan
  * @date 2019/1/23 17:21
  */
@@ -16,19 +17,36 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "t_commodity")
-public class Commodity {
+@Table(name = "t_activity")
+public class Activity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   /**
-   * 库存
+   * 商品Id
    */
-  Long amount;
-  BigDecimal price;
+  Long commodityId;
+
   /**
-   * 折扣价
+   * 商品对象
    */
-  @Column(name = "discount_price")
-  BigDecimal discountPrice;
+  @Transient
+  Commodity commodity;
+
+  /**
+   * 开始时间
+   */
+  @Column(name = "start_time")
+  Date startTime;
+
+  /**
+   * 开始时间
+   */
+  @Column(name = "end_time")
+  Date endTime;
+
+  /**
+   * 活动可用
+   */
+  Boolean enable;
 }
