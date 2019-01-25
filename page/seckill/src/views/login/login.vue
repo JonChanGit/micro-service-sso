@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import JWT from 'jwt-simple'
+import JWT from 'jwt-simple'
 import { login } from '@/api/api'
 /**
  * login
@@ -34,8 +34,8 @@ export default {
     }
   },
   computed: {
-    tokenStr:function () {
-      if(this.$isEmptyString(this.$store.getters.token)){
+    tokenStr() {
+      if (this.$isEmptyString(this.$store.getters.token)) {
         return ''
       }
       const payload = JWT.decode(this.$store.getters.token, '', true)
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     handleLoginClick() {
-      login(this.username, this.password).then(resp => {
+      login(this.username, this.password).then((resp) => {
         this.$store.dispatch('SetToken', resp.access_token)
       })
     }

@@ -11,7 +11,7 @@ export function parseTime(time, cFormat) {
   if (typeof time === 'object') {
     date = time
   } else {
-    if (('' + time).length === 10) time = parseInt(time) * 1000
+    if ((`${time}`).length === 10) time = parseInt(time) * 1000
     date = new Date(time)
   }
   const formatObj = {
@@ -26,9 +26,9 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     if (result.length > 0 && value < 10) {
-      value = '0' + value
+      value = `0${value}`
     }
     return value || 0
   })
@@ -44,33 +44,36 @@ export function formatTime(time, option) {
 
   if (diff < 30) {
     return '刚刚'
-  } else if (diff < 3600) {
+  } if (diff < 3600) {
     // less 1 hour
-    return Math.ceil(diff / 60) + '分钟前'
-  } else if (diff < 3600 * 24) {
-    return Math.ceil(diff / 3600) + '小时前'
-  } else if (diff < 3600 * 24 * 2) {
+    return `${Math.ceil(diff / 60)}分钟前`
+  } if (diff < 3600 * 24) {
+    return `${Math.ceil(diff / 3600)}小时前`
+  } if (diff < 3600 * 24 * 2) {
     return '1天前'
   }
   if (option) {
     return parseTime(time, option)
-  } else {
-    return (
-      d.getMonth() +
-      1 +
-      '月' +
-      d.getDate() +
-      '日' +
-      d.getHours() +
-      '时' +
-      d.getMinutes() +
-      '分'
-    )
   }
+  return (
+    `${d.getMonth() +
+      1
+    }月${
+      d.getDate()
+    }日${
+      d.getHours()
+    }时${
+      d.getMinutes()
+    }分`
+  )
 }
 
 export function debounce(func, wait, immediate) {
-  let timeout, args, context, timestamp, result
+  let timeout,
+    args,
+    context,
+    timestamp,
+    result
 
   const later = function() {
     // 据上一次触发时间间隔
@@ -142,7 +145,7 @@ export function deepCloneObject(target, source, deleteTargetProperty = false) {
 export function fractional(num, numberOfDigits) {
   let bit = 10
   for (let x = 1; x < numberOfDigits; x++) {
-    bit = bit * 10
+    bit *= 10
   }
   const number = num * bit
   return Math.round(number) / (bit)
@@ -177,7 +180,7 @@ export function arrayRemoveDuplicates(...array) {
  * @param setitem
  * @return {any[]}
  */
-export function setToArray(... setitem) {
+export function setToArray(...setitem) {
   const arr = []
   for (const [, item] of setitem.entries()) {
     arr.push(...Array.from(item))
@@ -190,7 +193,7 @@ export function setToArray(... setitem) {
  * @param {Function(arr[i],arr[i + 1])} 提供比较方法，如果为空，则使用默认规则比较
  * @param {...Object} arr
  */
-export function bubbleSortPlus(compare, ... arr) {
+export function bubbleSortPlus(compare, ...arr) {
   const _bubbleSortPlusSwap = (index1, index2, arr) => {
     const tmp = arr[index1]
     arr[index1] = arr[index2]
@@ -207,11 +210,9 @@ export function bubbleSortPlus(compare, ... arr) {
           endPos = i
           _bubbleSortPlusSwap(i, i + 1, arr)
         }
-      } else {
-        if (compare(arr[i], arr[i + 1])) {
-          endPos = i
-          _bubbleSortPlusSwap(i, i + 1, arr)
-        }
+      } else if (compare(arr[i], arr[i + 1])) {
+        endPos = i
+        _bubbleSortPlusSwap(i, i + 1, arr)
       }
     }
     end = endPos
@@ -221,11 +222,9 @@ export function bubbleSortPlus(compare, ... arr) {
           startPos = i
           _bubbleSortPlusSwap(i, i + 1, arr)
         }
-      } else {
-        if (compare(arr[i], arr[i + 1])) {
-          endPos = i
-          _bubbleSortPlusSwap(i, i + 1, arr)
-        }
+      } else if (compare(arr[i], arr[i + 1])) {
+        endPos = i
+        _bubbleSortPlusSwap(i, i + 1, arr)
       }
     }
     start = startPos

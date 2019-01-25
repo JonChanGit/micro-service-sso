@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <cell-list :data="cellList"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CellList from '@/components/cell-list'
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
-    HelloWorld
+    CellList
+  },
+  data() {
+    return {
+      cellList: [
+        {
+          name: 'N1',
+          beginTime: '2019年1月26日'
+        },
+        {
+          name: 'N1',
+          beginTime: '2019年1月26日'
+        }
+      ]
+    }
   }
 }
 </script>

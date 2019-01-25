@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('@/views/login/login')
     },
     {
+      path: '/commodity-detail',
+      name: 'CommodityDetail',
+      component: () => import('@/views/commodity-detail')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

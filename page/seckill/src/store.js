@@ -18,7 +18,7 @@ export default new Vuex.Store({
   actions: {
     SetToken({ commit }, token) {
       commit('setToken', token)
-    },
+    }
   },
   getters: {
     token: state => state.token

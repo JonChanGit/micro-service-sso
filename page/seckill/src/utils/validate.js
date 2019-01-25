@@ -53,9 +53,8 @@ export function isEmptyString(str) {
 export function isEmpty(val) {
   if (val === null || val === undefined) {
     return true
-  } else if (JSON.stringify(val) === '{}') {
+  } if (JSON.stringify(val) === '{}') {
     return true
-  } else {
-    return false
   }
+  return false
 }

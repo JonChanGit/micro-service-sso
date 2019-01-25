@@ -5,7 +5,7 @@
         <mt-button icon="back">首页</mt-button>
       </router-link>
       <mt-button slot="right" @click.native="handleAccountClick">
-        <img src="./assets/icom/account.png" height="20" width="20" slot="icon">
+        <img src="./assets/icon/account.png" height="20" width="20" slot="icon">
       </mt-button>
     </mt-header>
     <div id="nav" v-if="false">

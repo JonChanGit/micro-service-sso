@@ -1,7 +1,9 @@
 // 注册方法到this
 import _ from 'lodash' // https://www.lodashjs.com/docs/4.17.5.html
 import { isEmptyString, isEmpty } from './validate'
-import { deepCloneObject, fractional, pushAllToSet, arrayRemoveDuplicates, setToArray, bubbleSortPlus } from './index'
+import {
+  deepCloneObject, fractional, pushAllToSet, arrayRemoveDuplicates, setToArray, bubbleSortPlus
+} from './index'
 
 const rexNumber = /^[0-9]+$/
 
@@ -17,7 +19,7 @@ export default {
     Vue.prototype.$isEmptyOrZero = function(val) {
       if (isEmpty(val)) {
         return true
-      } else if (val === 0) {
+      } if (val === 0) {
         return true
       }
       return false
