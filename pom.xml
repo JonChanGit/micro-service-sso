@@ -19,6 +19,7 @@
     <spring-cloud.version>Finchley.SR2</spring-cloud.version>
     <querydsl.version>4.1.4</querydsl.version>
     <javax.inject.version>1</javax.inject.version>
+    <spring-web.version>5.0.12.RELEASE</spring-web.version>
   </properties>
 
   <modules>
@@ -40,7 +41,11 @@
         <artifactId>api</artifactId>
         <version>${version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring-web.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.springframework.cloud</groupId>

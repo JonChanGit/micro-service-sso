@@ -11,3 +11,8 @@ export const AUTHENTICATION_SERVICE = '/authentication'
  * @type {string}
  */
 export const USER_SERVICE = '/user'
+/**
+ * 销售服务
+ * @type {string}
+ */
+export const SALES_SERVICE = '/sales'
