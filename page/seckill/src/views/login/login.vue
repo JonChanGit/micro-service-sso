@@ -35,6 +35,18 @@ export default {
       account: ''
     }
   },
+  watch: {
+    '$store.state.account': {
+      handler(val) {
+        console.log(val)
+        if (Object.getOwnPropertyNames(val).length === 0) {
+          this.account = ''
+        }
+        this.account = JSON.stringify(val)
+      },
+      deep: true
+    }
+  },
   computed: {
     tokenStr() {
       if (this.$isEmptyString(this.$store.getters.token)) {
@@ -54,7 +66,7 @@ export default {
       login(this.username, this.password).then((resp) => {
         this.$store.dispatch('SetToken', resp.access_token)
         getAccount(resp.userId).then((account) => {
-          this.account = JSON.stringify(account)
+          this.$store.dispatch('SetAccount', account)
         })
       })
     }

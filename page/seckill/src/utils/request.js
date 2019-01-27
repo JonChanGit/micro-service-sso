@@ -7,6 +7,15 @@ import store from '../store'
 import { isEmptyString } from '@/utils/validate'
 
 /**
+ * 默认错误提示定义
+ * @type {{}}
+ */
+const defaultErrorDefined = {
+  500: '访问异常，请重试',
+  401: '请登录后操作'
+}
+
+/**
  * 创建axios实例
  * 调用时如果需要隐藏统一的错误提示，需要手动抛出错误并且设置hiddenDefaultAlert=true
  * @type {AxiosInstance}
@@ -61,10 +70,12 @@ service.interceptors.response.use(
   },
   (error) => {
     if (error.hiddenDefaultAlert !== true) {
-      let msg = '操作失败，请重试'
+      let msg = null
       if (error.response && error.response.status) {
-        if (error.config.errorDefined) {
+        if (error.config.errorDefined && error.config.errorDefined[error.response.status]) {
           msg = error.config.errorDefined[error.response.status]
+        } else {
+          msg = defaultErrorDefined[error.response.status]
         }
       }
       MessageBox.alert(`${msg}`)

@@ -1,11 +1,13 @@
 package cn.com.jonpad.providesales.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 商品/库存
@@ -26,6 +28,20 @@ public class Commodity {
    */
   Long amount;
   BigDecimal price;
+  /**
+   * 商品名称
+   */
+  String name;
+  /**MM月dd日
+   * 开始销售时间
+   */
+  @JSONField(format = "MM月dd日 hh:mm:ss")
+  Date beginTime;
+  /**
+   * 结束销售时间
+   */
+  @JSONField(format = "MM月dd日 hh:mm:ss")
+  Date endTime;
   /**
    * 折扣价
    */

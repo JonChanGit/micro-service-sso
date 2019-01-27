@@ -24,6 +24,8 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
+      <!--只提供声明，由运行时提供具体依赖-->
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>

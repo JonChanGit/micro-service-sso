@@ -4,8 +4,11 @@
         <div class="banner-bg" :style="{background: '#2e2e2e no-repeat center url('+imageUri+')'}"/>
         <div class="banner-content">
           <img alt="Vue logo" v-lazy="imageUri">
-          <h3>title</h3>
-          <h5>活动时间：2019年1月26日-2019年1月26日</h5>
+          <h3>{{detail.name}}</h3>
+          <h5>活动时间：{{detail.beginTime}}-{{detail.endTime}}</h5>
+          <h5>售价：{{detail.price}}</h5>
+          <h5>折扣价：{{detail.discountPrice}}</h5>
+          <h5>数量：{{detail.amount}}</h5>
         </div>
       </div>
       <div class="buy-btns">
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+import { getCommodityById } from '@/api/api'
 /**
  * commodity-detail
  * @author Jon Chan
@@ -30,12 +34,25 @@ export default {
   props: {},
   data() {
     return {
+      id: 0,
       msg: 'commodity-detail',
-      imageUri: 'https://cn.bing.com/az/hprichbg/rb/KukeriCostume_ZH-CN7695643694_1920x1080.jpg'
+      imageUri: 'https://cn.bing.com/az/hprichbg/rb/KukeriCostume_ZH-CN7695643694_1920x1080.jpg',
+      detail: {
+        amount: 0,
+        price: 0,
+        name: 0,
+        beginTime: 0,
+        endTime: 0,
+        discountPrice: 0
+      }
     }
   },
   computed: {},
   beforeCreate() {
+    this.id = this.$route.params.id
+    getCommodityById(this.id).then((resp) => {
+      Object.assign(this.detail, resp)
+    })
   },
   mounted() {
   },
@@ -62,7 +79,7 @@ export default {
       padding: 1rem 0;
       position: absolute;
       top: 0;
-      color: #cacaca;
+      color: #50b5ca;
       img{
         width: 60px;
         height: 60px;

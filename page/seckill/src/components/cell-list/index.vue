@@ -5,7 +5,7 @@
       v-for="(item, idx) in data"
       :key="idx"
       is-link
-      @click.native="handleItemClick">
+      @click.native="handleItemClick(item)">
       <span>{{item.beginTime}}开始</span>
       <img slot="icon" src="@/assets/logo.png" width="60" height="60">
     </mt-cell>
@@ -40,8 +40,8 @@ export default {
   mounted() {
   },
   methods: {
-    handleItemClick() {
-      this.$router.push({ name: 'CommodityDetail' })
+    handleItemClick(item) {
+      this.$router.push({ name: 'CommodityDetail', params: { id: item.id }})
     }
   }
 }

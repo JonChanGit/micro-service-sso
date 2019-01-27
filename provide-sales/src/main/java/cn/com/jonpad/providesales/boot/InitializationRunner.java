@@ -12,7 +12,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,15 +41,16 @@ public class InitializationRunner implements CommandLineRunner {
 
     if(cr.count() <= 0){
       List<Commodity> commodityList = new ArrayList<>(8);
-      Commodity c = new Commodity(1L, 100L, one, zero);
+      Instant now = Instant.now();
+      Commodity c = new Commodity(1L, 100L,one,"商品1", Date.from(now), Date.from(now.plus(1L, ChronoUnit.DAYS)), zero);
       commodityList.add(c);
-      c = new Commodity(1L, 100L, one, zero);
+      c = new Commodity(1L, 100L, one,"商品1", Date.from(now.plus(1L, ChronoUnit.DAYS)), Date.from(now.plus(2L, ChronoUnit.DAYS)), zero);
       commodityList.add(c);
-      c = new Commodity(2L, 100L, one, zero);
+      c = new Commodity(2L, 100L, one,"商品1", Date.from(now.plus(2L, ChronoUnit.DAYS)), Date.from(now.plus(3L, ChronoUnit.DAYS)), zero);
       commodityList.add(c);
-      c = new Commodity(3L, 100L, one, zero);
+      c = new Commodity(3L, 100L, one,"商品1", Date.from(now.plus(3L, ChronoUnit.DAYS)), Date.from(now.plus(4L, ChronoUnit.DAYS)), zero);
       commodityList.add(c);
-      c = new Commodity(4L, 100L, one, zero);
+      c = new Commodity(4L, 100L, one,"商品1", Date.from(now.plus(4L, ChronoUnit.DAYS)), Date.from(now.plus(5L, ChronoUnit.DAYS)), zero);
       commodityList.add(c);
 
       cr.saveAll(commodityList);

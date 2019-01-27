@@ -27,3 +27,29 @@ export function getAccount(userId) {
     }
   })
 }
+
+/**
+ * 获取商品列表
+ */
+export function getCommodity() {
+  return request({
+    url: `${SALES_SERVICE}/commodity`,
+    method: 'get',
+    errorDefined: {
+      404: `数据未找到`
+    }
+  })
+}
+
+/**
+ * 获取单个商品
+ */
+export function getCommodityById(id) {
+  return request({
+    url: `${SALES_SERVICE}/commodity/${id}`,
+    method: 'get',
+    errorDefined: {
+      404: `数据未找到`
+    }
+  })
+}

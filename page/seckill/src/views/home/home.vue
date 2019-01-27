@@ -5,13 +5,19 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { getCommodity } from '@/api/api'
 import CellList from '@/components/cell-list'
 
 export default {
   name: 'Home',
   components: {
     CellList
+  },
+  beforeCreate() {
+    getCommodity().then((resp) => {
+      this.cellList.splice(0, this.cellList.length)
+      this.cellList.push(...resp)
+    })
   },
   data() {
     return {
