@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="buy-btns">
-        <mt-button size="normal" class="concern-btn">
+        <mt-button size="normal" class="concern-btn" @click.native="handleConcernClick">
           <img src="@/assets/icon/concern.png" height="20" width="20" slot="icon">
           关注
         </mt-button>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui'
 import { getCommodityById } from '@/api/api'
 /**
  * commodity-detail
@@ -56,7 +57,13 @@ export default {
   },
   mounted() {
   },
-  methods: {}
+  methods: {
+    handleConcernClick() {
+      MessageBox.confirm('喜欢就在Github上Star吧').then(() => {
+        window.open('https://github.com/JonChanGit/micro-service-sso')
+      }).catch(() => {})
+    }
+  }
 }
 </script>
 
