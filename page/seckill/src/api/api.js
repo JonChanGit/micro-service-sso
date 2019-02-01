@@ -53,3 +53,20 @@ export function getCommodityById(id) {
     }
   })
 }
+
+/**
+ * 购买商品
+ * @param id
+ */
+export function buyCommodity() {
+  return request({
+    url: `${SALES_SERVICE}/order`,
+    method: 'post',
+    data: {
+      commodity: 1,
+      address: 'address',
+      amount: 99
+    }
+  })
+}
+

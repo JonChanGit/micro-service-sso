@@ -15,13 +15,18 @@
     <mt-button type="primary" @click.native="reduceBuyAmount">-</mt-button>
     <mt-button type="primary" style="float: right" @click.native="addBuyAmount">+</mt-button>
 
-    <mt-button type="primary" size="large" style="position: fixed; bottom: 0.5%; left: 0"  @click.native="buyNow">Buy Now</mt-button>
+    <mt-button
+      type="primary"
+      size="large"
+      style="position: fixed; bottom: 0.5%; left: 0"
+      @click.native="buyNow">Buy Now</mt-button>
   </div>
 </template>
 
 <script>
+import { buyCommodity } from '@/api/api'
 /**
- * index
+ * 下单页
  * @author Jon Chan
  * @date 2019/1/31 11:16
  */
@@ -75,6 +80,11 @@ export default {
     },
     buyNow() {
       this.$toast('开始下单')
+      buyCommodity({
+        commodity: this.commodityId,
+        address: 'empty',
+        amount: this.buyAmount
+      }).then(resp => console.log(resp))
     }
   }
 }

@@ -27,4 +27,19 @@ public class CommodityService {
     }
     return one;
   }
+
+  /**
+   * 检查库存是否充足
+   * @param id
+   * @param amount
+   * @return
+   */
+  public Boolean checkAmount(Long id, Long amount) {
+    Commodity one = getOne(id);
+    if(one.getAmount() - amount >= 0){
+      return  true;
+    }
+    return  false;
+  }
+
 }
