@@ -4,6 +4,7 @@ import { createService, clientAuthInfo } from './request-service'
 import NProgress from 'nprogress' // Progress 进度条
 import { MessageBox } from 'mint-ui'
 import store from '../store'
+import router from '../router'
 import { isEmptyString } from '@/utils/validate'
 
 /**
@@ -70,7 +71,7 @@ service.interceptors.response.use(
   },
   (error) => {
     if (error.hiddenDefaultAlert !== true) {
-      let msg = null
+      let msg = '发生未作错误'
       if (error.response && error.response.status) {
         if (error.config.errorDefined && error.config.errorDefined[error.response.status]) {
           msg = error.config.errorDefined[error.response.status]
@@ -78,7 +79,11 @@ service.interceptors.response.use(
           msg = defaultErrorDefined[error.response.status]
         }
       }
-      MessageBox.alert(`${msg}`)
+      MessageBox.alert(`${msg}`).then(() => {
+        if (error.response && error.response.status === 401) {
+          router.push({ name: 'Login' })
+        }
+      })
     }
     NProgress.done()
     return Promise.reject(error)

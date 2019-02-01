@@ -1,3 +1,4 @@
+/*eslint no-param-reassign: 0*/
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -12,7 +13,11 @@ export default new Vuex.Store({
     /**
      * 账户信息
      */
-    account: {}
+    account: {},
+    /**
+     * 需要购买的商品信息
+     */
+    buyCommodity: {}
   },
   mutations: {
     setToken: (state, token) => {
@@ -20,6 +25,14 @@ export default new Vuex.Store({
     },
     setAccount: (state, account) => {
       Object.assign(state.account, account)
+    },
+    setBuyCommodity: (state, item) => {
+      for (const key in item) {
+        if (Object.prototype.hasOwnProperty.call(state.buyCommodity, key)) {
+          delete state.buyCommodity[key]
+        }
+      }
+      Object.assign(state.buyCommodity, item)
     }
   },
   actions: {
@@ -28,6 +41,9 @@ export default new Vuex.Store({
     },
     SetAccount({ commit }, account) {
       commit('setAccount', account)
+    },
+    SetBuyCommodity({ commit }, item) {
+      commit('setBuyCommodity', item)
     }
   },
   getters: {

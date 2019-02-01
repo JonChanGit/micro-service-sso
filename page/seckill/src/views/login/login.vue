@@ -7,22 +7,45 @@
       无账户？
     </router-link>
     <br/>
-    <mt-field label="当前Token" placeholder="未登录" type="textarea" rows="2" :value="$store.getters.token" readonly></mt-field>
-    <mt-field label="Token解码" placeholder="未登录" type="textarea" rows="8" :value="tokenStr" readonly></mt-field>
-    <mt-field label="账户信息" placeholder="未登录" type="textarea" rows="8" :value="account" readonly></mt-field>
+    <mt-field
+      label="当前Token"
+      placeholder="未登录"
+      type="textarea"
+      rows="2"
+      :value="$store.getters.token"
+      readonly/>
+    <mt-field
+      label="Token解码"
+      placeholder="未登录"
+      type="textarea"
+      rows="2"
+      :value="tokenStr"
+      readonly/>
+    <mt-field
+      label="账户信息"
+      placeholder="未登录"
+      type="textarea"
+      rows="2"
+      :value="account"
+      readonly/>
 
-    <mt-button class="login-btn" size="large" type="primary" @click.native="handleLoginClick">登陆</mt-button>
+    <mt-button
+      class="login-btn"
+      size="large"
+      type="primary"
+      @click.native="handleLoginClick">登陆</mt-button>
   </div>
 </template>
 
 <script>
 import JWT from 'jwt-simple'
 import { login, getAccount } from '@/api/api'
+
 /**
- * login
- * @author Jon Chan
- * @date 2019/1/24 15:00
- */
+   * login
+   * @author Jon Chan
+   * @date 2019/1/24 15:00
+   */
 export default {
   name: 'Login',
   components: {},
@@ -76,9 +99,9 @@ export default {
 
 <style lang="scss" scoped>
   .login {
-    .login-btn{
+    .login-btn {
       position: absolute;
-      top: 80%;
+      bottom: 0.5%;
     }
   }
 </style>

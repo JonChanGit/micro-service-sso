@@ -14,10 +14,10 @@
 
 <script>
 /**
- * index
- * @author Jon Chan
- * @date 2019/1/26 2:19
- */
+   * index
+   * @author Jon Chan
+   * @date 2019/1/26 2:19
+   */
 export default {
   name: 'CellList',
   components: {},
