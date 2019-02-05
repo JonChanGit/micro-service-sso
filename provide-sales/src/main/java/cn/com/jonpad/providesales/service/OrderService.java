@@ -1,8 +1,8 @@
 package cn.com.jonpad.providesales.service;
 
-import cn.com.jonpad.providesales.controller.exception.InventoryAmount;
+import cn.com.jonpad.providesales.controller.exception.InventoryAmountException;
+import cn.com.jonpad.providesales.entity.Commodity;
 import cn.com.jonpad.providesales.entity.Order;
-import cn.com.jonpad.providesales.repository.CommodityRepository;
 import cn.com.jonpad.providesales.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +27,11 @@ public class OrderService {
    */
   @Transactional(rollbackFor = Exception.class)
   public void addOrder(Order orderInfo){
-    if (!commodityService.checkAmount(orderInfo.getId(),orderInfo.getAmount())) {
-      // 库存不足
-      throw new InventoryAmount();
-    }
+    Commodity commodity = commodityService.checkAmount(orderInfo.getCommodity(),orderInfo.getAmount());
+    // 更新库存
+    commodity.setAmount(commodity.getAmount() - orderInfo.getAmount() );
+
+    commodityService.saveAndFlush(commodity);
+    orderRepository.save(orderInfo);
   }
 }

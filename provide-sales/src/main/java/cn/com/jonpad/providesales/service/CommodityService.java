@@ -1,6 +1,7 @@
 package cn.com.jonpad.providesales.service;
 
 import cn.com.jonpad.api.controller.exception.NotFoundException;
+import cn.com.jonpad.providesales.controller.exception.InventoryAmountException;
 import cn.com.jonpad.providesales.entity.Commodity;
 import cn.com.jonpad.providesales.repository.CommodityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,16 @@ public class CommodityService {
    * @param amount
    * @return
    */
-  public Boolean checkAmount(Long id, Long amount) {
+  public Commodity checkAmount(Long id, Long amount) {
     Commodity one = getOne(id);
     if(one.getAmount() - amount >= 0){
-      return  true;
+      return  one;
     }
-    return  false;
+    throw new InventoryAmountException();
+  }
+
+  public void saveAndFlush(Commodity one){
+    commodityRepository.saveAndFlush(one);
   }
 
 }

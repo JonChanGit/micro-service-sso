@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @date 2019/2/1 17:28
  */
 @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
-public class InventoryAmount extends RuntimeException {
+public class InventoryAmountException extends RuntimeException {
 }

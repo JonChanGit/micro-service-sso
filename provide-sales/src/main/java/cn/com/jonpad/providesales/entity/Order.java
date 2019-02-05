@@ -3,6 +3,7 @@ package cn.com.jonpad.providesales.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Accessors(chain = true)
 @Entity
 @Table(name = "t_order")
 public class Order {
@@ -37,4 +39,7 @@ public class Order {
    * 下单数量
    */
   Long amount;
+
+  @Version
+  private Long version;
 }

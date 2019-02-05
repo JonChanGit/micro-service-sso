@@ -16,7 +16,6 @@ import java.util.Date;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "t_commodity")
 public class Commodity {
@@ -47,4 +46,20 @@ public class Commodity {
    */
   @Column(name = "discount_price")
   BigDecimal discountPrice;
+
+  @Version
+  private Long version;
+
+  public Commodity() {
+  }
+
+  public Commodity(Long id, Long amount, BigDecimal price, String name, Date beginTime, Date endTime, BigDecimal discountPrice) {
+    this.id = id;
+    this.amount = amount;
+    this.price = price;
+    this.name = name;
+    this.beginTime = beginTime;
+    this.endTime = endTime;
+    this.discountPrice = discountPrice;
+  }
 }
