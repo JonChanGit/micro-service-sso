@@ -12,7 +12,7 @@
   <artifactId>provide-sales</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>provide-sales</name>
-  <description>销售/下单程序</description>
+  <description>前置销售/下单程序</description>
 
   <dependencies>
     <dependency>
@@ -51,6 +51,10 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-oauth2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
     </dependency>
 
     <dependency>
