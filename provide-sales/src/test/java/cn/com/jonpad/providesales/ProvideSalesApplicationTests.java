@@ -41,6 +41,10 @@ public class ProvideSalesApplicationTests {
 
   /**
    * 单播
+   * 在RabbitMQ中操作：
+   * 添加Exchanges
+   * 添加Queues
+   * 将Exchanges和Queues绑定
    */
   @Test
   public void rabbitDirectSend() {
